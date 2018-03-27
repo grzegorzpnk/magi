@@ -15,26 +15,33 @@ public class Print {
 
     public static void main(String[] args) {
 
-        // Construct Model and Graph
-        GraphModel model = new DefaultGraphModel();
-        JGraph graph = new JGraph(model);
-        // Control-drag should clone selection
-        graph.setCloneable(true);
+    	//INICJALIZACJA GRAFU
+    	JGraph graph = GraphInitiation();
+        
+    	//BLOK WCZYTYWANIA DANYCH
+        int N = 3;
+        
+        //BLOK TWORZENIA GRAFU
+        DefaultGraphCell[] cell = new DefaultGraphCell[N];
+        cell = createGraph(N);  
+        graph.getGraphLayoutCache().insert(cell);
 
-        // Enable edit without final RETURN keystroke
-        graph.setInvokesStopCellEditing(true);
+        //BLOK WYSWIETLANIA GRAFU 
+        showGraph(graph);
+        
+    }
 
-        // When over a cell, jump to its default port (we only have one, anyway)
-        graph.setJumpToDefaultPort(true);
-
-        // Insert all three cells in one call, so we need an array to store them
-        DefaultGraphCell[] cells = new DefaultGraphCell[3];
-
+    
+    public static DefaultGraphCell[] createGraph(int N){
+    	
+        DefaultGraphCell[] cells = new DefaultGraphCell[N];
+    	
+        
         // Create Hello Vertex
-        cells[0] = createVertex("Hello", 20, 20, 40, 20, null, false );
+        cells[0] = createNode("Hello", 20, 20, 40, 20, null, false );
 
         // Create World Vertex
-        cells[1] = createVertex("World", 140, 140, 40, 20,
+        cells[1] = createNode("World", 140, 140, 40, 20,
                 Color.ORANGE, true);
 
         // Create Edge
@@ -43,22 +50,37 @@ public class Print {
         edge.setSource(cells[0].getChildAt(0));
         edge.setTarget(cells[0].getChildAt(0));
         cells[2] = edge;
+        
+               
+        
+        
+        
+        return cells;
+    	
+    }
+    
+    public static JGraph GraphInitiation(){
 
-        // Create Edge
-        DefaultEdge edge1 = new DefaultEdge();
+    	GraphModel model = new DefaultGraphModel();// Construct Model and Graph
+        JGraph graph = new JGraph(model);
+        graph.setCloneable(true);// Control-drag should clone selection
+        graph.setInvokesStopCellEditing(true);// Enable edit without final RETURN keystroke
+        graph.setJumpToDefaultPort(true);// When over a cell, jump to its default port (we only have one, anyway)
+        return graph;
 
-        // Insert the cells via the cache, so they get selected
-        graph.getGraphLayoutCache().insert(cells);
-
-        // Show in Frame
-        JFrame frame = new JFrame();
+    }
+    
+    public static void showGraph(JGraph graph){
+        
+    	JFrame frame = new JFrame();
         frame.getContentPane().add(new JScrollPane(graph));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+    	
     }
-
-    public static DefaultGraphCell createVertex(String name, double x,
+    
+    public static DefaultGraphCell createNode(String name, double x,
             double y, double w, double h, Color bg, boolean raised) {
 
         // Create vertex with the given name
@@ -88,4 +110,6 @@ public class Print {
 
         return cell;
     }
+    
+    
 }
