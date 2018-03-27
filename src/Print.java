@@ -11,7 +11,7 @@ import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.GraphModel;
 
-public class Foo {
+public class Print {
 
     public static void main(String[] args) {
 
@@ -46,17 +46,6 @@ public class Foo {
 
         // Create Edge
         DefaultEdge edge1 = new DefaultEdge();
-        // Fetch the ports from the new vertices, and connect them with the edge
-//        cells[0].addPort();
-//        cells[1].addPort();
-//        edge1.setSource(cells[1]);
-//        edge1.setTarget(cells[0]);
-//        cells[3] = edge1;
-
-        // Set Arrow Style for edge
-        int arrow = GraphConstants.ARROW_CLASSIC;
-        GraphConstants.setLineEnd(edge.getAttributes(), arrow);
-        GraphConstants.setEndFill(edge.getAttributes(), true);
 
         // Insert the cells via the cache, so they get selected
         graph.getGraphLayoutCache().insert(cells);
