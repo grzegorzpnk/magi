@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.awt.geom.Rectangle2D;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -10,16 +12,48 @@ import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.GraphModel;
+import java.util.Scanner;
 
 public class Print {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 
     	//INICJALIZACJA GRAFU
     	JGraph graph = GraphInitiation();
         
     	//BLOK WCZYTYWANIA DANYCH
-        int N = 3;
+    	//musimy wczytywac: posX, posY, name, polaczenie z ktorym 
+    	Scanner fileIn = new Scanner(new File("Graph10"));
+    	
+    	int nodesCnt=0;
+    	int edgesCnt = 0;
+    	int N;
+    	
+    	
+    	
+    	fileIn.hasNextInt(nodesCnt);
+    	Node[] nodes = new Node[nodesCnt];
+    	fileIn.hasNextInt(edgesCnt);
+    	N=nodesCnt+edgesCnt;
+    	
+    	for (int i = 0; i<nodesCnt; i++)
+    	{
+    		int posX=0,posY=0;
+    		String name=null;;
+    		fileIn.nextInt(posX);
+    		fileIn.nextInt(posY);
+    		fileIn.next(name);
+    		
+    		Node nodetmp= new Node(posX,posY,name);
+    		
+    		
+    	}
+    	
+    	
+    	
+    	
+    	fileIn.close();
+    	
         
         //BLOK TWORZENIA GRAFU
         DefaultGraphCell[] cell = new DefaultGraphCell[N];
@@ -28,6 +62,8 @@ public class Print {
 
         //BLOK WYSWIETLANIA GRAFU 
         showGraph(graph);
+        
+        
         
     }
 
@@ -111,5 +147,22 @@ public class Print {
         return cell;
     }
     
+        
+    public class Node{
+    	
+    	
+    	public Node(){}
+    	public Node(int x, int y, String _name)
+    	{
+    		posX = x;
+    		posY=y;
+    		name = _name;
+    	}
+    	
+    	public int posX;
+    	public int posY;
+    	public String name;
+    	   	
+    }
     
 }
