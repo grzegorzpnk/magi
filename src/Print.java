@@ -12,7 +12,11 @@ import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.GraphModel;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.Vector;
 
 public class Print {
 
@@ -22,42 +26,40 @@ public class Print {
     	JGraph graph = GraphInitiation();
         
     	//BLOK WCZYTYWANIA DANYCH
-    	//musimy wczytywac: posX, posY, name, polaczenie z ktorym 
-    	Scanner fileIn = new Scanner(new File("Graph10"));
-    	
-    	int nodesCnt=0;
-    	int edgesCnt = 0;
-    	int N;
-    	
-    	
-    	
-    	fileIn.hasNextInt(nodesCnt);
-    	Node[] nodes = new Node[nodesCnt];
-    	fileIn.hasNextInt(edgesCnt);
-    	N=nodesCnt+edgesCnt;
-    	
+    	Scanner fileIn = new Scanner(new File("graph10"));
+ 
+    	List<Node> nodes  = new ArrayList<Node>();
+    	List<Edge> edges  = new ArrayList<Edge>();
+
+    	int nodesCnt = fileIn.nextInt();
+    	int edgesCnt = fileIn.nextInt();
+    
     	for (int i = 0; i<nodesCnt; i++)
     	{
     		int posX=0,posY=0;
-    		String name=null;;
-    		fileIn.nextInt(posX);
-    		fileIn.nextInt(posY);
-    		fileIn.next(name);
-    		
-    		Node nodetmp= new Node(posX,posY,name);
-    		
-    		
+    		String name=null;
+    		posX = fileIn.nextInt();
+    		posY = fileIn.nextInt();
+    		name = fileIn.next();
+    		Node nodeTmp = new Node(posX,posY,name);
+    		nodes.add(nodeTmp);
     	}
     	
-    	
-    	
-    	
+    	for (int i = 0; i<edgesCnt; i++)
+    	{
+    		String source=null,target = null;
+    		source = fileIn.next();
+    		target = fileIn.next();
+    		Edge edgeTmp= new Edge(source, target);
+    		edges.add(edgeTmp);
+    	}
+    	   		
     	fileIn.close();
     	
         
         //BLOK TWORZENIA GRAFU
-        DefaultGraphCell[] cell = new DefaultGraphCell[N];
-        cell = createGraph(N);  
+        DefaultGraphCell[] cell = new DefaultGraphCell[nodesCnt+edgesCnt]; // pozniej zastap to N
+        cell = createGraph(nodes,edges);  
         graph.getGraphLayoutCache().insert(cell);
 
         //BLOK WYSWIETLANIA GRAFU 
@@ -68,35 +70,36 @@ public class Print {
     }
 
     
-    public static DefaultGraphCell[] createGraph(int N){
+    public static DefaultGraphCell[] createGraph(List<Node> _nodes, List<Edge> _edges) {
+		// TODO Auto-generated method stub
+		
+    	DefaultGraphCell[] cells = new DefaultGraphCell[_nodes.size()+_edges.size()];
     	
-        DefaultGraphCell[] cells = new DefaultGraphCell[N];
-    	
-        
-        // Create Hello Vertex
-        cells[0] = createNode("Hello", 20, 20, 40, 20, null, false );
-
-        // Create World Vertex
-        cells[1] = createNode("World", 140, 140, 40, 20,
-                Color.ORANGE, true);
-
-        // Create Edge
-        DefaultEdge edge = new DefaultEdge("foo");
-        // Fetch the ports from the new vertices, and connect them with the edge
-        edge.setSource(cells[0].getChildAt(0));
-        edge.setTarget(cells[0].getChildAt(0));
-        cells[2] = edge;
-        
-               
-        
-        
-        
-        return cells;
-    	
-    }
+    	for(int i=0; i<_nodes.size(); i++)
+        	cells[i] = createNode(_nodes.get(i).name, _nodes.get(i).posX, _nodes.get(i).posY, 50, 50, Color.BLUE, false );
     
-    public static JGraph GraphInitiation(){
+    	for(int i=0; i<_edges.size(); i++)
+    	{
+    		//tu trzeba sprawdzic
+    		DefaultEdge edge = new DefaultEdge("foo");
+    		for(int x=0; x<_nodes.size(); x++)
+    			if(_edges.get(i).source.equals(_nodes.get(x).name))
+           edge.setSource(cells[x].getChildAt(0));
+           
+    		for(int x=0; x<_nodes.size(); x++)
+    			if(_edges.get(i).target.equals(_nodes.get(x).name))
+    		edge.setTarget(cells[1].getChildAt(0));
+           
+    		
+    		cells[_nodes.size()+i] = edge;
+    	}  
+       
+    	
+    	return cells;
+	}
 
+
+    public static JGraph GraphInitiation(){
     	GraphModel model = new DefaultGraphModel();// Construct Model and Graph
         JGraph graph = new JGraph(model);
         graph.setCloneable(true);// Control-drag should clone selection
@@ -148,9 +151,8 @@ public class Print {
     }
     
         
-    public class Node{
-    	
-    	
+    public static class Node{
+    	    	
     	public Node(){}
     	public Node(int x, int y, String _name)
     	{
@@ -164,5 +166,19 @@ public class Print {
     	public String name;
     	   	
     }
+    
+    public static class Edge{
+    	
+    	public Edge(){}
+    	public Edge(String source,String target)
+    	{
+    		this.source= source;
+    		this.target = target;
+    	}
+    	
+    	public String source;
+    	public String target;
+    	   	
+    }    
     
 }
