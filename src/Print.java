@@ -83,13 +83,18 @@ public class Print {
     		//tu trzeba sprawdzic
     		DefaultEdge edge = new DefaultEdge("foo");
     		for(int x=0; x<_nodes.size(); x++)
-    			if(_edges.get(i).source.equals(_nodes.get(x).name))
-           edge.setSource(cells[x].getChildAt(0));
+    		{
+    			if(_edges.get(i).source.equals(_nodes.get(x).name)){
+    				edge.setSource(cells[x].getChildAt(0));
+    			System.out.println("Source ustawione na cells[]: "+x);}
+    		}
            
     		for(int x=0; x<_nodes.size(); x++)
-    			if(_edges.get(i).target.equals(_nodes.get(x).name))
-    		edge.setTarget(cells[1].getChildAt(0));
-           
+    		{
+    			if(_edges.get(i).target.equals(_nodes.get(x).name)){
+    		edge.setTarget(cells[x].getChildAt(0));
+    			System.out.println("Dest ustawione na cells[]: "+x);}
+    		}
     		
     		cells[_nodes.size()+i] = edge;
     	}  

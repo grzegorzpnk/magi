@@ -1,6 +1,9 @@
-3 2
+4 4
 20 20 Centralny
 140 140 Wilanowska
 20 140 Stadion
-Centralny Wialnowska
+140 20 Zachodni
+Centralny Wilanowska
 Wilanowska Stadion
+Zachodni Centralny
+Zachodni Wilanowska
