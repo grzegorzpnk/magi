@@ -120,6 +120,7 @@ public class Print {
         frame.getContentPane().add(new JScrollPane(graph));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
+       
         frame.setVisible(true);
     	
     }
