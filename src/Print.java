@@ -1,11 +1,17 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.geom.Rectangle2D;
 import java.io.File;
 import java.io.FileNotFoundException;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+
 import org.jgraph.JGraph;
 import org.jgraph.graph.DefaultEdge;
 import org.jgraph.graph.DefaultGraphCell;
@@ -16,7 +22,6 @@ import org.jgraph.graph.GraphModel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Vector;
 
 public class Print {
 
@@ -34,7 +39,7 @@ public class Print {
     	int nodesCnt = fileIn.nextInt();
     	int edgesCnt = fileIn.nextInt();
     
-    	for (int i = 0; i<nodesCnt; i++)
+ for (int i = 0; i<nodesCnt; i++)
     	{
     		int posX=0,posY=0;
     		String name=null;
@@ -58,10 +63,12 @@ public class Print {
     	
         
         //BLOK TWORZENIA GRAFU
-        DefaultGraphCell[] cell = new DefaultGraphCell[nodesCnt+edgesCnt]; // pozniej zastap to N
+        DefaultGraphCell[] cell = new DefaultGraphCell[nodesCnt+edgesCnt+1]; // pozniej zastap to N
         cell = createGraph(nodes,edges);  
+        cell[nodesCnt+edgesCnt] = createNode("", 500, 500, 1,1, Color.BLUE, false ); // obejscie na rozmiar grafu
         graph.getGraphLayoutCache().insert(cell);
-
+    
+     
         //BLOK WYSWIETLANIA GRAFU 
         showGraph(graph);
         
@@ -73,7 +80,7 @@ public class Print {
     public static DefaultGraphCell[] createGraph(List<Node> _nodes, List<Edge> _edges) {
 		// TODO Auto-generated method stub
 		
-    	DefaultGraphCell[] cells = new DefaultGraphCell[_nodes.size()+_edges.size()];
+    	DefaultGraphCell[] cells = new DefaultGraphCell[(_nodes.size()+_edges.size())+1];
     	
     	for(int i=0; i<_nodes.size(); i++)
         	cells[i] = createNode(_nodes.get(i).name, _nodes.get(i).posX, _nodes.get(i).posY, 50, 50, Color.BLUE, false );
@@ -108,7 +115,7 @@ public class Print {
     	GraphModel model = new DefaultGraphModel();// Construct Model and Graph
         JGraph graph = new JGraph(model);
         graph.setCloneable(true);// Control-drag should clone selection
-        graph.setInvokesStopCellEditing(true);// Enable edit without final RETURN keystroke
+       graph.setInvokesStopCellEditing(true);// Enable edit without final RETURN keystroke
         graph.setJumpToDefaultPort(true);// When over a cell, jump to its default port (we only have one, anyway)
         return graph;
 
@@ -116,12 +123,38 @@ public class Print {
     
     public static void showGraph(JGraph graph){
         
-    	JFrame frame = new JFrame();
-        frame.getContentPane().add(new JScrollPane(graph));
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+    	JFrame frame = new JFrame("Taxi location in Warsaw");
     	
+    	
+    	JPanel panel = new JPanel();
+    	panel.setBackground(Color.BLUE);
+    	panel.add(new JScrollPane(graph));
+
+    	frame.add(panel);
+
+    	JPanel panel2 = new JPanel();
+    	panel2.setBackground(Color.YELLOW);
+        
+        JButton button1 = new JButton("8:00");
+        JButton button2 = new JButton("9:00");
+        JButton button3 = new JButton("10:00");
+        button1.setSize(100, 100);
+        button2.setSize(100, 100);
+        button3.setSize(100, 100);
+        panel2.add(button1);
+        panel2.add(button2);
+        panel2.add(button3);
+        panel2.setSize(200,500);
+        frame.add(panel2, BorderLayout.SOUTH);
+       // frame.setSize(1000,1000);
+        
+       frame.pack();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+     
+        
+
+        
     }
     
     public static DefaultGraphCell createNode(String name, double x,
