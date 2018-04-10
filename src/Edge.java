@@ -1,0 +1,14 @@
+
+public class Edge {
+
+	public Edge(){}
+	public Edge(String source,String target)
+	{
+		this.source= source;
+		this.target = target;
+	}
+	
+	public String source;
+	public String target;
+	
+}
