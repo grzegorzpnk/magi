@@ -17,9 +17,12 @@ public class Main {
 
 	
 	//stworzmy GUI
-	ReadFromFile read = new ReadFromFile("graph9");
+	/*ReadFromFile read = new ReadFromFile("graph9");
 	GUI gui = new GUI();
-	
+	*/
+		
+		Frame frame = new Frame();
+		frame.setVisible(true);
 	}
 
 	

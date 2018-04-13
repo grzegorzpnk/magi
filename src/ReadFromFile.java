@@ -1,17 +1,22 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
 public class ReadFromFile {
+	
+	static List<Node> nodes  = new ArrayList<Node>();
+	static List<Edge> edges  = new ArrayList<Edge>();
 	
 	public ReadFromFile(String fileName) throws FileNotFoundException{
 		ReadConfigFromFile(fileName);
 	}
 
 	  public static void ReadConfigFromFile(String file) throws FileNotFoundException{
-	    	Graph.nodes.clear();
-	    	Graph.edges.clear();
+	    	nodes.clear();
+	    	edges.clear();
 	    	Scanner fileIn = new Scanner(new File(file));
 	    	 
 
@@ -26,7 +31,7 @@ public class ReadFromFile {
 	    		posY = fileIn.nextInt();
 	    		name = fileIn.next();
 	    		Node nodeTmp = new Node(posX,posY,name);
-	    		Graph.nodes.add(nodeTmp);
+	    		nodes.add(nodeTmp);
 	    	}
 	    	
 	    	for (int i = 0; i<edgesCnt; i++)
@@ -35,10 +40,13 @@ public class ReadFromFile {
 	    		source = fileIn.next();
 	    		target = fileIn.next();
 	    		Edge edgeTmp= new Edge(source, target);
-	    		Graph.edges.add(edgeTmp);
+	    		edges.add(edgeTmp);
 	    	}
 	    	   		
 	    	fileIn.close();
 	    }
 	
+
+
+
 }
