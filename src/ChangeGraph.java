@@ -21,7 +21,8 @@ public class ChangeGraph extends Frame {
 		
 		for(int i=0; i<ReadFromFile.nodes.size(); i++)
 		{
-			Object v1 = getGraph().insertVertex(parent, null, ReadFromFile.nodes.get(i).name, ReadFromFile.nodes.get(i).posX, ReadFromFile.nodes.get(i).posY, 100, 50);
+			Object v1 = getGraph().insertVertex(parent, null, ReadFromFile.nodes.get(i).name, ReadFromFile.nodes.get(i).posX, ReadFromFile.nodes.get(i).posY, 100, 50, "fillColor="+ReadFromFile.nodes.get(i).color);
+			
 			getM().put(ReadFromFile.nodes.get(i).name, v1);
 		}
 		getGraph().getModel().endUpdate();

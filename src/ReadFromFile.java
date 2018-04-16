@@ -26,11 +26,12 @@ public class ReadFromFile {
 	 for (int i = 0; i<nodesCnt; i++)
 	    	{
 	    		int posX=0,posY=0;
-	    		String name=null;
+	    		String name=null, color=null;
 	    		posX = fileIn.nextInt();
 	    		posY = fileIn.nextInt();
 	    		name = fileIn.next();
-	    		Node nodeTmp = new Node(posX,posY,name);
+	    		color = fileIn.next();
+	    		Node nodeTmp = new Node(posX,posY,name,color);
 	    		nodes.add(nodeTmp);
 	    		System.out.println(name);
 	    	}
