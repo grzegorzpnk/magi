@@ -32,6 +32,7 @@ public class ReadFromFile {
 	    		name = fileIn.next();
 	    		Node nodeTmp = new Node(posX,posY,name);
 	    		nodes.add(nodeTmp);
+	    		System.out.println(name);
 	    	}
 	    	
 	    	for (int i = 0; i<edgesCnt; i++)
