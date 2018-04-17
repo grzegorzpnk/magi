@@ -48,13 +48,13 @@ public class Frame extends JFrame implements MouseListener{
 	}
 
 	private void initGUI() {
-		setSize(700, 500);
+		setSize(800, 900);
 		setLocationRelativeTo(null);
 		setLayout(new FlowLayout());
 		
 		
 		graphComponent = new mxGraphComponent(graph);
-		graphComponent.setPreferredSize(new Dimension(670, 380));
+		graphComponent.setPreferredSize(new Dimension(800, 800));
 		getContentPane().add(graphComponent);
 		
 		slide = new JSlider(8, 22, 8);

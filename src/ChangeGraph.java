@@ -21,7 +21,7 @@ public class ChangeGraph extends Frame {
 		
 		for(int i=0; i<ReadFromFile.nodes.size(); i++)
 		{
-			Object v1 = getGraph().insertVertex(parent, null, ReadFromFile.nodes.get(i).name, ReadFromFile.nodes.get(i).posX, ReadFromFile.nodes.get(i).posY, 100, 50, "fillColor="+ReadFromFile.nodes.get(i).color);
+			Object v1 = getGraph().insertVertex(parent, null, ReadFromFile.nodes.get(i).name, ReadFromFile.nodes.get(i).posX, ReadFromFile.nodes.get(i).posY, 40, 40, "fillColor="+ReadFromFile.nodes.get(i).color);
 			
 			getM().put(ReadFromFile.nodes.get(i).name, v1);
 		}
@@ -33,7 +33,7 @@ public class ChangeGraph extends Frame {
 		{
 		Object v1 = getM().get(ReadFromFile.edges.get(x).source);
         Object v2 = getM().get(ReadFromFile.edges.get(x).target);
-        getGraph().insertEdge(parent2, null, "Trasa", v1, v2);
+        getGraph().insertEdge(parent2, null, "", v1, v2);
 		}
         	
 	
