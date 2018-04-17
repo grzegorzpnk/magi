@@ -3,6 +3,8 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.List;
 
+import com.mxgraph.util.mxConstants;
+
 public class ChangeGraph extends Frame {	
 	
 	public ChangeGraph(String fileName) throws FileNotFoundException{
@@ -10,7 +12,7 @@ public class ChangeGraph extends Frame {
 		ReadFromFile read = new ReadFromFile(fileName);
 		
 		//tu najpierw wyczyscmy model
-		for(int i = 0; i< 10;i++)
+		for(int i = 0; i< 50;i++)
 		{
 					graph.selectChildCell();
 					graph.removeCells();
@@ -25,7 +27,6 @@ public class ChangeGraph extends Frame {
 			
 			getM().put(ReadFromFile.nodes.get(i).name, v1);
 		}
-		getGraph().getModel().endUpdate();
 		
 		Object parent2 = getGraph().getDefaultParent();
 		
@@ -33,8 +34,11 @@ public class ChangeGraph extends Frame {
 		{
 		Object v1 = getM().get(ReadFromFile.edges.get(x).source);
         Object v2 = getM().get(ReadFromFile.edges.get(x).target);
-        getGraph().insertEdge(parent2, null, "", v1, v2);
+        getGraph().insertEdge(parent2, null, "", v1, v2, "endArrow=none");
+       
+        
 		}
+		getGraph().getModel().endUpdate();
         	
 	
 	}

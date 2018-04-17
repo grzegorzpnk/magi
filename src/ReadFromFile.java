@@ -27,8 +27,8 @@ public class ReadFromFile {
 	    	{
 	    		int posX=0,posY=0;
 	    		String name=null, color=null;
-	    		posX = fileIn.nextInt();
 	    		posY = fileIn.nextInt();
+	    		posX = fileIn.nextInt();
 	    		name = fileIn.next();
 	    		color = fileIn.next();
 	    		Node nodeTmp = new Node(posX,posY,name,color);

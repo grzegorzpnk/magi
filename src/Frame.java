@@ -7,18 +7,23 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Rectangle2D;
 import java.io.FileNotFoundException;
+import java.util.Collection;
 import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import com.mxgraph.model.mxGraphModel;
 import com.mxgraph.swing.mxGraphComponent;
+import com.mxgraph.util.mxConstants;
+import com.mxgraph.util.mxUtils;
 import com.mxgraph.view.mxGraph;
 
 import java.lang.*;
@@ -48,14 +53,18 @@ public class Frame extends JFrame implements MouseListener{
 	}
 
 	private void initGUI() {
-		setSize(800, 900);
+		setSize(600, 700);
 		setLocationRelativeTo(null);
 		setLayout(new FlowLayout());
 		
-		
 		graphComponent = new mxGraphComponent(graph);
-		graphComponent.setPreferredSize(new Dimension(800, 800));
-		getContentPane().add(graphComponent);
+		
+		graphComponent.getGraphControl().updatePreferredSize();
+		graphComponent.setPreferredSize(new Dimension(600, 600));
+		
+
+		//getContentPane().add(JScrollPane(graphComponent));
+		getContentPane().add(new JScrollPane(graphComponent));
 		
 		slide = new JSlider(8, 22, 8);
 		slide.setPreferredSize(new Dimension(420, 50));

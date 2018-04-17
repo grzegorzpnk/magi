@@ -1,5 +1,45 @@
-2 1
-20 20 Centralny green
-140 140 Wilanowska yellow
-Centralny Wilanowska red
+18 24
+300 10 Zachodni yellow
+300 150 Wawelska yellow
+310 280 GUS yellow
+290 450 Torwar yellow
+230 160 Ochota red
+230 290 Centralny red
+180 150 Daszyńskiego red
+120 150 Okopowa yellow
+70 260 Radosława yellow
+150 275 Femina red
+20 280 Marymont yellow
+440 140 Marynarska red
+480 150 Postępu yellow
+450 220 GalMok red
+445 320 Wilanowska red
+380 460 Czerniaków yellow
+150 560 Wileński red
+260 585 Wiatraczna red
+Zachodni Wawelska
+Zachodni Ochota
+Ochota Wawelska
+Ochota Daszyńskiego
+Daszyńskiego Okopowa
+Okopowa Femina
+Femina Centralny
+Centralny GUS
+Ochota Centralny
+Wawelska GUS
+Femina Radosława
+Radosława Marymont
+Radosława Wilński
+Wileński Wiatraczna
+Torwar Wiatraczna
+Torwar GUS
+Wawelska Marynarska
+Marynarska Postępu
+Postępu GalMok
+GalMok Marynarska
+GalMok Wilanowska
+Wilanowska GUS
+Wilanowska Czerniaków
+Czerniaków Torwar
+
 
