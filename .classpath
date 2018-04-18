@@ -2,6 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/g.panek/Documents/eclipse-java-luna-SR2-win32/eclipse/workspace/magi/jgraphx.jar"/>
+	<classpathentry kind="lib" path="/home/gpanek/workspace/magi/jgraphx.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

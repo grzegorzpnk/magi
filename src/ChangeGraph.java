@@ -43,6 +43,8 @@ public class ChangeGraph extends Frame {
 				System.out.println(x+". "+node.name+" == "+node.color + " -> "+node1.name);
 					
 			 }
+		else if (fileName.equals("start"))
+			getGraph().insertEdge(parent2, null, "", v1, v2, "endArrow=none");
 			 
 			 
 	}

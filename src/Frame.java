@@ -59,14 +59,14 @@ public class Frame extends JFrame implements MouseListener, ActionListener{
 	}
 
 	private void initGUI() {
-		setSize(700, 800);
+		setSize(600, 700);
 		setLocationRelativeTo(null);
 		setLayout(new FlowLayout());
 		
 		graphComponent = new mxGraphComponent(graph);
 		
 		graphComponent.getGraphControl().updatePreferredSize();
-		graphComponent.setPreferredSize(new Dimension(700, 700));
+		graphComponent.setPreferredSize(new Dimension(600, 600));
 		
 
 		//getContentPane().add(JScrollPane(graphComponent));
@@ -127,7 +127,6 @@ public class Frame extends JFrame implements MouseListener, ActionListener{
 
 
 
-	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		label.setText(Integer.toString(ReadFromFile.licznik));
 		
