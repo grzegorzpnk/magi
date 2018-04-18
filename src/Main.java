@@ -19,6 +19,7 @@ public class Main {
 		
 		Frame frame = new Frame();
 		frame.setVisible(true);
+		 try{ChangeGraph add = new ChangeGraph("start");} catch (Exception f){}
 	}
 
 	

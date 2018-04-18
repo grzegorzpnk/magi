@@ -1,9 +1,42 @@
-4 4
-20 20 Centralny red
-800 140 Wilanowska yellow
-20 140 Stadion green
-180 20 Zachodni blue
-Centralny Wilanowska
-Wilanowska Stadion
-Zachodni Centralny
-Zachodni Wilanowska
+19 21
+300 10 Zachodni yellow
+300 150 Wawelska red
+300 280 MPolitechnika red
+300 450 Torwar orange
+230 150 Ochota red
+230 390 Centralny orange
+180 150 Daszynskiego yellow
+120 150 Okopowa silver
+70 265 Radoslawa yellow
+150 265 Femina green
+20 280 Marymont green
+440 140 Marynarska red
+500 150 Postepu green
+440 220 GalMok orange
+445 320 Wilanowska orange
+380 460 Czerniakow yellow
+150 560 Wilenski silver
+260 585 Wiatraczna silver
+140 10 Kasprzaka red
+Zachodni Wawelska
+Zachodni Ochota
+Ochota Wawelska
+Ochota Daszynskiego
+Femina Centralny
+Centralny MPolitechnika
+Ochota Centralny
+Wawelska MPolitechnika
+Femina Radoslawa
+Radoslawa Marymont
+Torwar MPolitechnika
+Wawelska Marynarska
+Marynarska Postepu
+Postepu GalMok
+GalMok Marynarska
+GalMok Wilanowska
+Wilanowska MPolitechnika
+Wilanowska Czerniakow
+Czerniakow Torwar
+Centralny Torwar
+Kasprzaka Daszynskiego
+

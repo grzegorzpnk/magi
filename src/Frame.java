@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
@@ -28,18 +29,23 @@ import com.mxgraph.view.mxGraph;
 
 import java.lang.*;
 
-public class Frame extends JFrame implements MouseListener{
+public class Frame extends JFrame implements MouseListener, ActionListener{
 	protected static mxGraph graph = new mxGraph();
 	protected static HashMap m = new HashMap();
+	protected static HashMap m1 = new HashMap();
 	private mxGraphComponent graphComponent;
 	private JTextField texto;
 	private JButton button10;
 	private JButton button9;
 	private JSlider slide;
-	private Object cell;	
+	private Object cell;
+	private JLabel label;
 	
 	public static HashMap getM() {
 		return m;
+	}
+	public static HashMap getM1() {
+		return m1;
 	}
 
 	public static mxGraph getGraph() {
@@ -53,20 +59,20 @@ public class Frame extends JFrame implements MouseListener{
 	}
 
 	private void initGUI() {
-		setSize(600, 700);
+		setSize(700, 800);
 		setLocationRelativeTo(null);
 		setLayout(new FlowLayout());
 		
 		graphComponent = new mxGraphComponent(graph);
 		
 		graphComponent.getGraphControl().updatePreferredSize();
-		graphComponent.setPreferredSize(new Dimension(600, 600));
+		graphComponent.setPreferredSize(new Dimension(700, 700));
 		
 
 		//getContentPane().add(JScrollPane(graphComponent));
 		getContentPane().add(new JScrollPane(graphComponent));
 		
-		slide = new JSlider(8, 22, 8);
+		slide = new JSlider(7, 22, 7);
 		slide.setPreferredSize(new Dimension(420, 50));
 		slide.setMinorTickSpacing(1);
 		slide.setMajorTickSpacing(1);
@@ -75,10 +81,14 @@ public class Frame extends JFrame implements MouseListener{
 		getContentPane().add(slide);
 		slide.addMouseListener(this);
 
-		
-        button10 = new JButton("10:00");
+        button10 = new JButton("Symuluj");
+        button10.addActionListener(this);
         getContentPane().add(button10);
-        //try{ChangeGraph add = new ChangeGraph("graph8");} catch (Exception f){}
+        
+        label = new JLabel("");
+        label.setPreferredSize(new Dimension(40, 40));
+        getContentPane().add(label);
+       
         
 	}
 
@@ -112,6 +122,14 @@ public class Frame extends JFrame implements MouseListener{
 		tmp = Integer.toString(hour);
 		System.out.println(tmp);
 		try{ChangeGraph add = new ChangeGraph("graph"+tmp);} catch (Exception f){}
+		
+	}
+
+
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		label.setText(Integer.toString(ReadFromFile.licznik));
 		
 	}
 
