@@ -10,16 +10,20 @@ public class Main {
 	
 	public static void main(String[] args) throws FileNotFoundException {
 
-
-	
-	//stworzmy GUI
-	/*ReadFromFile read = new ReadFromFile("graph9");
-	GUI gui = new GUI();
-	*/
+		/*Frame frame = new Frame();
+		frame.setVisible(true);*/
+		try{ChangeGraph add = new ChangeGraph("start");} catch (Exception f){}
 		
-		Frame frame = new Frame();
-		frame.setVisible(true);
-		 try{ChangeGraph add = new ChangeGraph("start");} catch (Exception f){}
+		
+		
+		Uniform_Distribution tmp = new Uniform_Distribution(ReadFromFile.nodes);
+		for(int i=0; i<ReadFromFile.nodes.size();i++)
+		{
+			System.out.println(ReadFromFile.nodes.get(i).name+" == "+ReadFromFile.nodes.get(i).request);
+			
+		}
+		
+		
 	}
 
 	

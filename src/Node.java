@@ -8,12 +8,14 @@ public class Node {
 		posY=y;
 		name = _name;
 		color = _color;
+		request = false;
 	}
 	
 	public int posX;
 	public int posY;
 	public String name;
 	public String color;
+	public boolean request;
 	   	
 	
 }
