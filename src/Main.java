@@ -16,12 +16,7 @@ public class Main {
 		
 		
 		
-		Uniform_Distribution tmp = new Uniform_Distribution(ReadFromFile.nodes);
-		for(int i=0; i<ReadFromFile.nodes.size();i++)
-		{
-			System.out.println(ReadFromFile.nodes.get(i).name+" == "+ReadFromFile.nodes.get(i).request);
-			
-		}
+		
 		
 		
 	}
