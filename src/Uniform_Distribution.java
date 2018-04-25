@@ -6,10 +6,9 @@ import java.util.Random;
 
 public class Uniform_Distribution {
 	
-	public Uniform_Distribution(List<Node> nodes){
+	public void losujZapotrzebowanie(List<Node> nodes){
 
 	List<Integer> l = new ArrayList<Integer>();
-
 	Random rnd = new Random();
 	
 	for (int i = 0; i < nodes.size(); i++) 
@@ -21,15 +20,17 @@ public class Uniform_Distribution {
 		
 	for(int i=0;i<nodes.size();i++)
 	{
-		if(l.get(i) == 1)
+		if(l.get(i) == 1){
 		nodes.get(i).request = true;
+		//tmp++;
+		}
 		else
 		nodes.get(i).request = false;
 		
 	}
 		
 
-	System.out.println(((float) tmp)/nodes.size());
+	//System.out.println(((float) tmp)/nodes.size());
 	
 	
 }
