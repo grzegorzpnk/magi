@@ -44,18 +44,17 @@ public class Chart extends JFrame {
 
     private XYDataset createDataset() {
 
-    	System.out.println(Simulation.pstwa.size());
+
         TimeSeries series = new TimeSeries("2016");
-        int minuta=0,godzina=7;
+        int minuta=0,godzina=6;
 
         for(int i =0; i< Simulation.pstwa.size();i++)
         {
         	if((i*5)%60  == 0 & i!=0)
-        	godzina++;
-        	     	
-
-        	minuta = i*60/12 + 7*60 - godzina*60;
-        	System.out.println(godzina+ " : "+ minuta);
+        	godzina++;     	     	
+        	
+        	minuta = i*60/12 + 6*60 - godzina*60;
+        	
         	series.add(new Minute(minuta, godzina, 7, 12, 2003),(double)Simulation.pstwa.get(i));
         	
         }

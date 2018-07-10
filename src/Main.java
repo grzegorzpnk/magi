@@ -3,6 +3,7 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Main {
 
@@ -12,14 +13,27 @@ public class Main {
 
 		/*Frame frame = new Frame();
 		frame.setVisible(true);*/
+
 		try{ChangeGraph add = new ChangeGraph("start");} catch (Exception f){}
 		Simulation simulation = new Simulation();
-		System.out.println("zakonczylem dzialanie");
-		simulation.checkVolume();
-		System.out.println("zakonczylem dzialanie2");
+		simulation.checkVolumeGoogle();
+
 		Chart chart = new Chart();
 		chart.setVisible(true);
-		System.out.println("zakonczylem dzialanie3");
+
+	/*	List<Double> l = new ArrayList<Double>();
+		
+		Random rnd = new Random ();
+		
+		for (int i = 0; i < 20; i++) 
+		    l.add(rnd.nextGaussian()*50 +100);
+		
+		for (int x = 0; x < 20; x++)
+		System.out.println(l.get(x));
+		
+		*/
+		
+		
 		
 		
 		

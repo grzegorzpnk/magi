@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class Uniform_Distribution {
 	
+	
 	public void losujZapotrzebowanie(List<Node> nodes){
 
 	List<Integer> l = new ArrayList<Integer>();
@@ -35,5 +36,17 @@ public class Uniform_Distribution {
 	
 }
 
+	public void losujZapotrzebowanieGauss(List<Node> nodes, int godzina, int minuta){
+		
+		
+		//System.out.println(godzina);
+		if(godzina == 8)
+		{
+			float tmp = minuta*12/60+1;
+			System.out.println(tmp);			
+		}
+	}
+
+	
 
 }
