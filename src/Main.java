@@ -11,10 +11,10 @@ public class Main {
 	
 	public static void main(String[] args) throws FileNotFoundException {
 
-		/*Frame frame = new Frame();
-		frame.setVisible(true);*/
+//		Frame frame = new Frame();
+	//	frame.setVisible(true);
 
-		try{ChangeGraph add = new ChangeGraph("start");} catch (Exception f){}
+		try{ChangeGraph add = new ChangeGraph("graph7");} catch (Exception f){}
 		Simulation simulation = new Simulation();
 		simulation.checkVolumeGoogle();
 

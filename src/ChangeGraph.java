@@ -40,7 +40,7 @@ public class ChangeGraph extends Frame {
 		if(!node.color.equals("silver")&!node1.color.equals("silver"))
 		{
 			getGraph().insertEdge(parent2, null, "", v1, v2, "endArrow=none");
-				System.out.println(x+". "+node.name+" == "+node.color + " -> "+node1.name);
+				//System.out.println(x+". "+node.name+" == "+node.color + " -> "+node1.name);
 					
 			 }
 		else if (fileName.equals("start"))

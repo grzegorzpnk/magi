@@ -9,6 +9,7 @@ public class ReadFromFile {
 	
 	static List<Node> nodes  = new ArrayList<Node>();
 	static List<Edge> edges  = new ArrayList<Edge>();
+	static int nodesCnt=0;
 	static int licznik =0;
 	
 	public ReadFromFile(String fileName) throws FileNotFoundException{
@@ -22,7 +23,7 @@ public class ReadFromFile {
 	    	Scanner fileIn = new Scanner(new File(file));
 	    	 
 
-	    	int nodesCnt = fileIn.nextInt();
+	    	nodesCnt = fileIn.nextInt();
 	    	int edgesCnt = fileIn.nextInt();
 	    
 	 for (int i = 0; i<nodesCnt; i++)

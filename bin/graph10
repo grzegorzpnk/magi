@@ -1,38 +1,33 @@
-19 28
+19 21
 300 10 Zachodni yellow
-300 150 Wawelska orange
-300 280 MPolitechnika yellow
-300 450 Torwar silver
-230 150 Ochota yellow
+300 150 Wawelska red
+300 280 MPolitechnika red
+300 450 Torwar orange
+230 150 Ochota red
 230 390 Centralny orange
-180 150 Daszynskiego green
+180 150 Daszynskiego yellow
 120 150 Okopowa silver
-70 265 Radoslawa green
-150 265 Femina silver
-20 280 Marymont silver
-440 140 Marynarska yellow
-500 150 Postepu silver
-440 220 GalMok yellow
-445 320 Wilanowska yellow
+70 265 Radoslawa yellow
+150 265 Femina green
+20 280 Marymont green
+440 140 Marynarska red
+500 150 Postepu green
+440 220 GalMok orange
+445 320 Wilanowska orange
 380 460 Czerniakow yellow
 150 560 Wilenski silver
-260 585 Wiatraczna green
-140 10 Kasprzaka yellow
+260 585 Wiatraczna silver
+140 10 Kasprzaka red
 Zachodni Wawelska
 Zachodni Ochota
 Ochota Wawelska
 Ochota Daszynskiego
-Daszynskiego Okopowa
-Okopowa Femina
 Femina Centralny
 Centralny MPolitechnika
 Ochota Centralny
 Wawelska MPolitechnika
 Femina Radoslawa
 Radoslawa Marymont
-Radoslawa Wilenski
-Wilenski Wiatraczna
-Torwar Wiatraczna
 Torwar MPolitechnika
 Wawelska Marynarska
 Marynarska Postepu
@@ -42,7 +37,6 @@ GalMok Wilanowska
 Wilanowska MPolitechnika
 Wilanowska Czerniakow
 Czerniakow Torwar
-Centralny Wiatraczna
 Centralny Torwar
-Kasprzaka Okopowa
 Kasprzaka Daszynskiego
+

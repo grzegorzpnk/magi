@@ -5,32 +5,16 @@ import java.util.Random;
 
 public class Simulation {
 
-	public Uniform_Distribution tmp;
-	public static int volume=0;
-	public static ArrayList<Float> pstwa = new ArrayList<Float>();
-	int cnt2=0, cnt1=0;
+	public static ArrayList<Float> pstwo = new ArrayList<Float>();
+	public static ArrayList<Float> ruch = new ArrayList<Float>();
 	
-	public Simulation(){
-		tmp = new Uniform_Distribution();
-		tmp.losujZapotrzebowanie(ReadFromFile.nodes);
-	
-	}
-	/*
-	//funkcja powinna zwraca 60 wynikow, czyli symulacja godzinowa
-	//kazdy wynik to pstwo odrzucenia naszego zgloszenia w kazdej stacji
-	public void conductSimulation(boolean symType, int start)//0-N,1-G  start -> godizna startowa
-	{	
-		for (int i=0; i < 12*15; i++)//co 5 minut * 16 godzin (7-22)
-			for (int x =0; x<ReadFromFile.nodes.size();i++){
-				
-				//sprawdz czy jest zgloszenie
-				
-			}		
-	}
-	*/
 	
 	public void checkVolume(){
-		volume = 0; cnt1 = 0; cnt2 = 0; pstwa.clear();
+		int volume = 0; int cnt1 = 0; int cnt2 = 0; ruch.clear();
+		Uniform_Distribution distribution;
+		
+		distribution = new Uniform_Distribution();
+		distribution.losujZapotrzebowanie(ReadFromFile.nodes);
 		
 		//co 5 minut * 16 godzin (6-22)
 		for (int i=0; i < 12*16; i++){
@@ -42,8 +26,8 @@ public class Simulation {
 				}
 				else cnt2++;
 				}
-				pstwa.add((float) ((float)cnt1/(float)(cnt1+cnt2)));
-			tmp.losujZapotrzebowanie(ReadFromFile.nodes);
+				ruch.add((float) ((float)cnt1/(float)(cnt1+cnt2)));
+			distribution.losujZapotrzebowanie(ReadFromFile.nodes);
 	}
 
 		System.out.println("Zapotrzebowanie: "+ volume +". Odrzucone: "+cnt2);
@@ -51,87 +35,47 @@ public class Simulation {
 	}
 
 	
-
-	public void checkVolumeGauss(){
-		volume = 0; cnt1 = 0; cnt2 = 0; pstwa.clear();
-		int godzina  = 6;
-		int minuta = 0;
-		float wsp;
-		
-		for (int i=0; i < 12*16; i++){
-			cnt1=0; cnt2=0; wsp=0;
-			
-			for (int x =0; x<ReadFromFile.nodes.size();x++){
-				if(ReadFromFile.nodes.get(x).request)
-					cnt1++;
-				else cnt2++;
-			}
-				
-			
-			//gauss
-			
-			if(godzina == 6){
-			
-				wsp = -(float)1.25*minuta/5/100;
-					System.out.println(wsp);
-			}
-
-			if(godzina == 7){
-				wsp = -(float)1.25*minuta/5/100;
-					System.out.println(wsp);
-			}
-			if(godzina == 8)
-				wsp = (float)2.5*minuta/5/100;
-			if(godzina == 9){
-				int minuta2 = 60-minuta;
-				wsp = (float)2.5*minuta2/5/100;
-			}
-			
-			if(godzina == 14)
-				wsp = (float)1.25*minuta/5/100;
-			if(godzina == 15)
-			{
-				int minuta2 = minuta+60;
-				wsp = (float)1.25*minuta2/5/100;
-			}
-			if(godzina == 16){
-				int minuta2 = 120-minuta;
-				wsp = (float)1.25*minuta2/5/100;
-			}
-			if(godzina == 17){
-				int minuta2 = 60-minuta;
-				wsp = (float)1.25*minuta2/5/100;
-			}
-			
-				//System.out.println(godzina+":"+minuta+". "+ (((float)cnt1/(float)(cnt1+cnt2))+wsp));
-				pstwa.add((float) ((float)cnt1/(float)(cnt1+cnt2))+wsp);
-				
-			
-			
-			minuta +=5;
-			if(minuta==60)
-			{	godzina++;
-				minuta=0;
-			}
-			tmp.losujZapotrzebowanie(ReadFromFile.nodes);
-			}
-		}
 	
 	public void checkVolumeGoogle(){
-		 cnt1 = 0; cnt2 = 0; pstwa.clear();
-		 float traffic = 0;
-		 float podstawa=78;// to na sztywno
-		for(int i=7; i<7+5; i++){
+		 //zadeklarowane zmienne
+		 ruch.clear(); pstwo.clear();
+		 float traffic = 0; //zmienna pomocnicza do sumowania ruchu z każego węzła w każdej iteracji godzinnej
+		 float pasazerowie = 0;//zmienna pomocnicza do sumowania ludzi (ruch *10) z każego węzła w każdej iteracji godzinnej
+		 int maxIloscKursow = 3;//tyle kursów zrobi taxa w ciągu godziny
+		 int posiadaneTaxy = 6; //ile taksówek jest przypisanych do danego punktu na godzine
+		 float mozliweKursyNaGodzine = (float) maxIloscKursow*posiadaneTaxy*ReadFromFile.nodes.size();
+
+		 int iloscGodzin = 15;
+		for(int i=7; i<7+iloscGodzin; i++){//taka petla bo mamy graf od godziny 7 rano przez nastepne 15 godzin
 			try{ChangeGraph add = new ChangeGraph("graph"+i);} catch (Exception f){}
 			traffic = 0;
+			pasazerowie = 0;
 			for (int x =0; x<ReadFromFile.nodes.size();x++)
-				traffic+=ReadFromFile.nodes.get(x).traffic;			
-			
-			
-			pstwa.add(traffic/podstawa);
-			System.out.println("Ruch o godzinie: "+i+" wyniósł: "+pstwa);
+				traffic+=ReadFromFile.nodes.get(x).traffic;
+
+			 
+			ruch.add(traffic);// do tablicy kreślącej ruch dodaj zsumowany ruch z godziny
+			pasazerowie = traffic *10; //to moje zalozenie ze ruch to 10krotnosc tego podanego w node
+			if(pasazerowie<=posiadaneTaxy*ReadFromFile.nodes.size()*maxIloscKursow)
+				pstwo.add((float)0);
+			else
+			pstwo.add((pasazerowie-mozliweKursyNaGodzine)/(mozliweKursyNaGodzine));
+				
+			System.out.println("Ruch o godzinie: "+i+" wyniósł: "+traffic);
+			System.out.println("Zapotrzebowanie o godzinie: "+i+" wyniosło: "+pasazerowie);
+			if(pasazerowie<=posiadaneTaxy*ReadFromFile.nodes.size()*maxIloscKursow)
+				System.out.println("pstwo odrzucenia wyniosło: 0");
+			else
+			System.out.println("pstwo odrzucenia wyniosło: "+(pasazerowie-mozliweKursyNaGodzine)/mozliweKursyNaGodzine);
 			
 		}
+		 int tmp=0;
+		for(int i=0;i<ruch.size();i++)
+			tmp+=ruch.get(i)*10;
+		System.out.println("calkowite zapotrzebowanie w ciagu dnia: "+tmp);
+		System.out.println("średnie zapotrzebowanie na godzine: "+tmp/iloscGodzin);
+		System.out.println("średnie ilość taksówek na godzine: "+tmp/iloscGodzin/maxIloscKursow);
+		System.out.println("ilość taksówek na godzine: na punkt "+tmp/iloscGodzin/maxIloscKursow/ReadFromFile.nodes.size());
 	}
 	
 }	

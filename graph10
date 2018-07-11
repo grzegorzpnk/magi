@@ -1,4 +1,4 @@
-19 21
+19 28
 300 10 Zachodni yellow
 300 150 Wawelska red
 300 280 MPolitechnika red
@@ -22,12 +22,17 @@ Zachodni Wawelska
 Zachodni Ochota
 Ochota Wawelska
 Ochota Daszynskiego
+Daszynskiego Okopowa
+Okopowa Femina
 Femina Centralny
 Centralny MPolitechnika
 Ochota Centralny
 Wawelska MPolitechnika
 Femina Radoslawa
 Radoslawa Marymont
+Radoslawa Wilenski
+Wilenski Wiatraczna
+Torwar Wiatraczna
 Torwar MPolitechnika
 Wawelska Marynarska
 Marynarska Postepu
@@ -37,6 +42,7 @@ GalMok Wilanowska
 Wilanowska MPolitechnika
 Wilanowska Czerniakow
 Czerniakow Torwar
+Centralny Wiatraczna
 Centralny Torwar
+Kasprzaka Okopowa
 Kasprzaka Daszynskiego
-
