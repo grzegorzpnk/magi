@@ -10,28 +10,24 @@ public class Simulation {
 	
 	
 	public void checkVolume(){
-		int volume = 0; int cnt1 = 0; int cnt2 = 0; ruch.clear();
+		float traffic = 0; ruch.clear();
+		
 		Uniform_Distribution distribution;
+		distribution = new Uniform_Distribution(ReadFromFile.nodes);
+		//distribution.losujZapotrzebowanie(ReadFromFile.nodes);
 		
-		distribution = new Uniform_Distribution();
-		distribution.losujZapotrzebowanie(ReadFromFile.nodes);
-		
-		//co 5 minut * 16 godzin (6-22)
-		for (int i=0; i < 12*16; i++){
-			cnt1=0; cnt2=0;	
+		//tu sprawdz
+		for (int i=0; i < 17; i++)	{			
 			for (int x =0; x<ReadFromFile.nodes.size();x++){
-				if(ReadFromFile.nodes.get(x).request){
-					volume++; 
-					cnt1++;
-				}
-				else cnt2++;
-				}
-				ruch.add((float) ((float)cnt1/(float)(cnt1+cnt2)));
-			distribution.losujZapotrzebowanie(ReadFromFile.nodes);
-	}
-
-		System.out.println("Zapotrzebowanie: "+ volume +". Odrzucone: "+cnt2);
-		
+				System.out.println("czastkowy traffic to: "+ReadFromFile.nodes.get(x).traffic);
+				traffic+=ReadFromFile.nodes.get(x).traffic;
+			}
+			System.out.println("traffic: "+traffic);
+			ruch.add(traffic);		
+			distribution=null;
+			distribution = new Uniform_Distribution(ReadFromFile.nodes);	
+			traffic=0;
+		}		
 	}
 
 	
@@ -45,8 +41,8 @@ public class Simulation {
 		 int posiadaneTaxy = 6; //ile taksówek jest przypisanych do danego punktu na godzine
 		 float mozliweKursyNaGodzine = (float) maxIloscKursow*posiadaneTaxy*ReadFromFile.nodes.size();
 
-		 int iloscGodzin = 15;
-		for(int i=7; i<7+iloscGodzin; i++){//taka petla bo mamy graf od godziny 7 rano przez nastepne 15 godzin
+		 int iloscGodzin = 17;//6-22
+		for(int i=6; i<6+iloscGodzin; i++){//taka petla bo mamy graf od godziny 6 rano przez nastepne 16 godzin
 			try{ChangeGraph add = new ChangeGraph("graph"+i);} catch (Exception f){}
 			traffic = 0;
 			pasazerowie = 0;

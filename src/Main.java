@@ -14,13 +14,18 @@ public class Main {
 //		Frame frame = new Frame();
 	//	frame.setVisible(true);
 
-		try{ChangeGraph add = new ChangeGraph("graph7");} catch (Exception f){}
+		try{ChangeGraph add = new ChangeGraph("graph6");} catch (Exception f){}
 		Simulation simulation = new Simulation();
 		simulation.checkVolumeGoogle();
 
 		Chart chart = new Chart();
 		chart.setVisible(true);
 
+		Simulation simulation2 = new Simulation();
+		simulation2.checkVolume();
+
+		Chart chart2 = new Chart();
+		chart2.setVisible(true);
 	/*	List<Double> l = new ArrayList<Double>();
 		
 		Random rnd = new Random ();
