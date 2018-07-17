@@ -8,8 +8,7 @@ public class Uniform_Distribution {
 	
 	
 	
-	  public Uniform_Distribution(List<Node> nodes){
-	//public void losujZapotrzebowanie(List<Node> nodes){
+	  public Uniform_Distribution(List<Node> nodes, float wsp){
 
 	List<Integer> l = new ArrayList<Integer>();
 	Random rnd = new Random();
@@ -21,15 +20,13 @@ public class Uniform_Distribution {
 	
 		
 	for(int i=0;i<nodes.size();i++)
-		nodes.get(i).traffic = l.get(i);
+		nodes.get(i).traffic = ((float) l.get(i)) *wsp;
 		
-	float tmp=0;
+	/*float tmp=0;
 	for(int i=0;i<l.size();i++)
-		tmp+=l.get(i);
-	
+		tmp+=((float)l.get(i))*wsp;
 	System.out.println("śuma rozkladu to : "+ tmp/nodes.size());
-		
-	
+		*/
 	
 	
 }

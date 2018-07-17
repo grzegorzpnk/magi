@@ -29,6 +29,6 @@ public class Node {
 	public String name;
 	public String color;
 	public boolean request;
-	public int traffic;   	
+	public float traffic;   	
 	
 }

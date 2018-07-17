@@ -16,35 +16,21 @@ public class Main {
 
 		try{ChangeGraph add = new ChangeGraph("graph6");} catch (Exception f){}
 		Simulation simulation = new Simulation();
+		simulation.posiadaneTaxy=6;
 		simulation.checkVolumeGoogle();
 
 		Chart chart = new Chart();
 		chart.setVisible(true);
 
-		Simulation simulation2 = new Simulation();
-		simulation2.checkVolume();
+		
+		
+		
+		/*Simulation simulation2 = new Simulation();
+		simulation2.checkVolume((float)1.0); //UWAGA! zazwyczaj jest to losowanie z pstwem 1/2, wiec przemysl wspolczynnik!
 
 		Chart chart2 = new Chart();
 		chart2.setVisible(true);
-	/*	List<Double> l = new ArrayList<Double>();
-		
-		Random rnd = new Random ();
-		
-		for (int i = 0; i < 20; i++) 
-		    l.add(rnd.nextGaussian()*50 +100);
-		
-		for (int x = 0; x < 20; x++)
-		System.out.println(l.get(x));
-		
-		*/
-		
-		
-		
-		
-		
-		
-		
-		
+*/			
 	}
 
 	
