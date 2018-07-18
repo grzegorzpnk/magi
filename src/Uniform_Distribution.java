@@ -14,7 +14,7 @@ public class Uniform_Distribution {
 	Random rnd = new Random();
 	
 	for (int i = 0; i < nodes.size(); i++) 
-	    l.add(rnd.nextInt(5));
+	    l.add(rnd.nextInt(5));//czyli losujemy z przedziału [0,4], czyli takiego jaki nadajemy wagi z map
 	
 	Collections.shuffle(l);
 	
@@ -27,7 +27,6 @@ public class Uniform_Distribution {
 		tmp+=((float)l.get(i))*wsp;
 	System.out.println("śuma rozkladu to : "+ tmp/nodes.size());
 		*/
-	
 	
 }
 

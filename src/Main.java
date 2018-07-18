@@ -17,8 +17,9 @@ public class Main {
 		try{ChangeGraph add = new ChangeGraph("graph6");} catch (Exception f){}
 		Simulation simulation = new Simulation();
 		simulation.posiadaneTaxy=6;
+		//simulation.checkVolume((float)(0.66666));
 		simulation.checkVolumeGoogle();
-
+		
 		Chart chart = new Chart();
 		chart.setVisible(true);
 

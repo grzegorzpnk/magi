@@ -46,7 +46,7 @@ public class Chart extends JFrame {
 
         TimeSeries series = new TimeSeries("2016");
         for(int i =0; i<Simulation.ruch.size();i++)
-        	series.add(new Minute(0, 6+i, 7, 12, 2003),(double)Simulation.pstwo.get(i));
+        	series.add(new Minute(0, 6+i, 7, 12, 2003),(double)Simulation.pstwo.get(i)*100);
         
         TimeSeriesCollection dataset = new TimeSeriesCollection();
         dataset.addSeries(series);
@@ -60,10 +60,10 @@ public class Chart extends JFrame {
         XYPlot plot = chart.getXYPlot();
         
         NumberAxis range = (NumberAxis) plot.getRangeAxis();
-        range.setRange(0.0, 1.0);
-       range.setTickUnit(new NumberTickUnit(0.1));
-      //  range.setRange(0.0, 100.0);
-        //range.setTickUnit(new NumberTickUnit(10));
+      // range.setRange(0.0, 1.0);
+       //range.setTickUnit(new NumberTickUnit(0.1));
+       range.setRange(0.0, 100.0);
+       range.setTickUnit(new NumberTickUnit(10));
 
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
         renderer.setSeriesPaint(0, Color.RED);
