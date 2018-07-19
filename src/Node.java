@@ -29,6 +29,7 @@ public class Node {
 	public String name;
 	public String color;
 	public boolean request;
-	public float traffic;   	
+	public float traffic;  //ruch w tym wezle, w skali [0,4] 	
+	public int taxiNumber; //ilosc taksowek przypisana temu wezlowi
 	
 }

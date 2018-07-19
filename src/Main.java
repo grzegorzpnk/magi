@@ -16,14 +16,22 @@ public class Main {
 
 		try{ChangeGraph add = new ChangeGraph("graph6");} catch (Exception f){}
 		Simulation simulation = new Simulation();
-		simulation.posiadaneTaxy=6;
+		simulation.posiadaneTaxy=5;
 		//simulation.checkVolume((float)(0.66666));
-		simulation.checkVolumeGoogle();
+		//simulation.checkVolumeGoogle();
 		
-		Chart chart = new Chart();
-		chart.setVisible(true);
+		//Chart chart = new Chart();
+		//chart.setVisible(true);
 
+		simulation.checkVolumeGoogle2();
+		Chart chart2 = new Chart();
+		chart2.setVisible(true);
 		
+		Algorythm alg = new Algorythm();
+		alg.WykonajAlgorytm();
+		
+		Chart chart3 = new Chart();
+		chart3.setVisible(true);
 		
 		
 		/*Simulation simulation2 = new Simulation();

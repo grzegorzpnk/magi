@@ -45,7 +45,7 @@ public class Chart extends JFrame {
     private XYDataset createDataset() {
 
         TimeSeries series = new TimeSeries("2016");
-        for(int i =0; i<Simulation.ruch.size();i++)
+        for(int i =0; i<Simulation.pstwo.size();i++)
         	series.add(new Minute(0, 6+i, 7, 12, 2003),(double)Simulation.pstwo.get(i)*100);
         
         TimeSeriesCollection dataset = new TimeSeriesCollection();
