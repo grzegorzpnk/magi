@@ -57,6 +57,7 @@ public class Chart extends JFrame {
     private JFreeChart createChart(XYDataset dataset) {
 
         JFreeChart chart = ChartFactory.createTimeSeriesChart("Taxi Warsaw","Czas", "Pstwo odrzucenia zgloszenia", dataset);
+    	// JFreeChart chart = ChartFactory.createTimeSeriesChart("Taxi Warsaw","Czas", "Natężenie ruchu", dataset);
         XYPlot plot = chart.getXYPlot();
         
         NumberAxis range = (NumberAxis) plot.getRangeAxis();

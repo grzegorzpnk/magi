@@ -11,13 +11,13 @@ public class Main {
 	
 	public static void main(String[] args) throws FileNotFoundException {
 
-//		Frame frame = new Frame();
-	//	frame.setVisible(true);
+		/*Frame frame = new Frame();
+		frame.setVisible(true);*/
 
 		try{ChangeGraph add = new ChangeGraph("graph6");} catch (Exception f){}
 		Simulation simulation = new Simulation();
-		simulation.posiadaneTaxy=5;
-		//simulation.checkVolume((float)(0.66666));
+		simulation.posiadaneTaxy=6;
+	//	simulation.checkVolume((float)(1));
 		//simulation.checkVolumeGoogle();
 		
 		//Chart chart = new Chart();
@@ -27,6 +27,7 @@ public class Main {
 		Chart chart2 = new Chart();
 		chart2.setVisible(true);
 		
+
 		Algorythm alg = new Algorythm();
 		alg.WykonajAlgorytm();
 		

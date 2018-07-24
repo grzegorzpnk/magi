@@ -59,14 +59,14 @@ public class Frame extends JFrame implements MouseListener, ActionListener{
 	}
 
 	private void initGUI() {
-		setSize(600, 700);
+		setSize(600, 800);
 		setLocationRelativeTo(null);
 		setLayout(new FlowLayout());
 		
 		graphComponent = new mxGraphComponent(graph);
 		
 		graphComponent.getGraphControl().updatePreferredSize();
-		graphComponent.setPreferredSize(new Dimension(600, 600));
+		graphComponent.setPreferredSize(new Dimension(700, 600));
 		
 
 		//getContentPane().add(JScrollPane(graphComponent));
